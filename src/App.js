@@ -19,7 +19,8 @@ export default function App() {
     return (
         <div>
             <BillInput />
-            <ServiceInput />
+            <ServiceInput>How did you like the service?</ServiceInput>
+            <ServiceInput>How did your friend like the service?</ServiceInput>
             <GrandTotal />
         </div>
     );
@@ -38,10 +39,10 @@ function BillInput() {
     );
 }
 
-function ServiceInput() {
+function ServiceInput({ children }) {
     return (
         <div>
-            <h3>How was the service?</h3>
+            <h3>{children}</h3>
             <select>
                 {serviceOptions.map((option) => (
                     <option>{option.text}</option>
