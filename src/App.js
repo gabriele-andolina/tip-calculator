@@ -1,5 +1,20 @@
 import "./style.css";
 
+const serviceOptions = [
+    {
+        text: "Awful (0%)",
+    },
+    {
+        text: "Okay (5%)",
+    },
+    {
+        text: "Good (10%)",
+    },
+    {
+        text: "Superb (20%)",
+    },
+];
+
 export default function App() {
     return (
         <div>
@@ -28,10 +43,9 @@ function ServiceInput() {
         <div>
             <h3>How was the service?</h3>
             <select>
-                <option>Awful (0%)</option>
-                <option>Okay (5%)</option>
-                <option>Good (10%)</option>
-                <option>Superb (20%)</option>
+                {serviceOptions.map((option) => (
+                    <option>{option.text}</option>
+                ))}
             </select>
         </div>
     );
