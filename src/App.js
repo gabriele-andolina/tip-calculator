@@ -1,28 +1,16 @@
 import { useState } from "react";
 import "./style.css";
 
-const serviceOptions = [
-    {
-        text: "Awful (0%)",
-    },
-    {
-        text: "Okay (5%)",
-    },
-    {
-        text: "Good (10%)",
-    },
-    {
-        text: "Superb (20%)",
-    },
-];
-
 export default function App() {
     const [bill, setBill] = useState(0);
+    const [tip, setTip] = useState(0);
 
     return (
         <div>
             <BillInput bill={bill} onSetBill={setBill} />
-            <ServiceInput>How did you like the service?</ServiceInput>
+            <ServiceInput tip={tip} onSetTip={setTip}>
+                How did you like the service?
+            </ServiceInput>
             <ServiceInput>How did your friend like the service?</ServiceInput>
             <GrandTotal bill={bill} />
         </div>
@@ -43,21 +31,20 @@ function BillInput({ bill, onSetBill }) {
     );
 }
 
-function ServiceInput({ children }) {
+function ServiceInput({ bill, tip, setTip, children }) {
+    function handleSelectPercentage(e) {
+        e.preventDefault();
+
+        console.log(e);
+    }
+
     return (
         <div>
             <h3>{children}</h3>
-            <select>
-                {serviceOptions.map((option) => (
-                    <option>{option.text}</option>
-                ))}
-            </select>
         </div>
     );
 }
 
 function GrandTotal({ bill }) {
-    const newBill = bill;
-
-    return <h1>{`You pay €100 (€${newBill} + €10 tip)`}</h1>;
+    return <h1>{`You pay €100 (€${bill} + €10 tip)`}</h1>;
 }
