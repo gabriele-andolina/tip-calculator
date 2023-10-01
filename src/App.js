@@ -41,7 +41,7 @@ function ServiceInput({ bill, tip, setTip, children }) {
     return (
         <div>
             <label>{children}</label>
-            <select>
+            <select onChange={handleSelectPercentage}>
                 <option value={0}>Awful (0%)</option>
                 <option value={5}>Ok (5%)</option>
                 <option value={10}>Good (10%)</option>
