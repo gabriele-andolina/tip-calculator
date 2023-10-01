@@ -40,7 +40,13 @@ function ServiceInput({ bill, tip, setTip, children }) {
 
     return (
         <div>
-            <h3>{children}</h3>
+            <label>{children}</label>
+            <select>
+                <option value={0}>Awful (0%)</option>
+                <option value={5}>Ok (5%)</option>
+                <option value={10}>Good (10%)</option>
+                <option value={20}>Superb (20%)</option>
+            </select>
         </div>
     );
 }
