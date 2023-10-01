@@ -11,4 +11,11 @@ input,
 select {
     width: 20rem;
     border: 3px solid #e5d283;
+    margin-bottom: 0.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }

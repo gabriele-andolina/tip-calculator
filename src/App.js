@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./style.css";
 
 export default function App() {
-    const [bill, setBill] = useState(0);
+    const [bill, setBill] = useState("");
     const [tip, setTip] = useState(0);
+    const [friendTip, setFriendTip] = useState(0);
 
     return (
         <div>
@@ -11,31 +12,34 @@ export default function App() {
             <ServiceInput tip={tip} onSetTip={setTip}>
                 How did you like the service?
             </ServiceInput>
-            <ServiceInput>How did your friend like the service?</ServiceInput>
+            <ServiceInput friendTip={friendTip} onSetFriendTip={setFriendTip}>
+                How did your friend like the service?
+            </ServiceInput>
             <GrandTotal bill={bill} />
         </div>
     );
 }
 
 function BillInput({ bill, onSetBill }) {
-    function handleInput(e) {
-        e.preventDefault();
-        onSetBill(e.target.value);
-    }
-
     return (
         <div>
-            <h3>How much was the bill?</h3>
-            <input type="text" onChange={handleInput}></input>
+            <label>How much was the bill?</label>
+            <input
+                type="text"
+                placeholder="Please enter your bill here"
+                value={bill}
+                onChange={(e) => onSetBill(Number(e.target.value))}
+            ></input>
         </div>
     );
 }
 
-function ServiceInput({ bill, tip, setTip, children }) {
+function ServiceInput({ tip, onSetTip, friendTip, onSetFriendTip, children }) {
     function handleSelectPercentage(e) {
         e.preventDefault();
 
-        console.log(e);
+        onSetTip(e.target.value);
+        // onSetFriendTip(e.target.value);
     }
 
     return (
