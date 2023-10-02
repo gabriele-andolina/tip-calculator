@@ -12,7 +12,7 @@ export default function App() {
             <ServiceInput tip={tip} onSetTip={setTip}>
                 How did you like the service?
             </ServiceInput>
-            <ServiceInput friendTip={friendTip} onSetFriendTip={setFriendTip}>
+            <ServiceInput tip={friendTip} onSetTip={setFriendTip}>
                 How did your friend like the service?
             </ServiceInput>
             <GrandTotal bill={bill} />
@@ -34,12 +34,11 @@ function BillInput({ bill, onSetBill }) {
     );
 }
 
-function ServiceInput({ tip, onSetTip, friendTip, onSetFriendTip, children }) {
+function ServiceInput({ tip, onSetTip, children }) {
     function handleSelectPercentage(e) {
         e.preventDefault();
 
         onSetTip(e.target.value);
-        // onSetFriendTip(e.target.value);
     }
 
     return (
