@@ -55,8 +55,7 @@ function ServiceInput({ tip, onSetTip, children }) {
 }
 
 function GrandTotal({ bill, tip, friendTip }) {
-    const tipAverage = tip + friendTip;
-    console.log(tipAverage);
+    const tipTotal = (tip + friendTip) / 2;
 
-    return <h1>{`You pay €100 (€${bill} + €${tipAverage})`}</h1>;
+    return <h1>{`You pay €100 (€${bill} + €${tipTotal})`}</h1>;
 }
