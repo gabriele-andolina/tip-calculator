@@ -15,7 +15,7 @@ export default function App() {
             <ServiceInput tip={friendTip} onSetTip={setFriendTip}>
                 How did your friend like the service?
             </ServiceInput>
-            <GrandTotal bill={bill} />
+            <GrandTotal bill={bill} tip={tip} friendTip={friendTip} />
         </div>
     );
 }
@@ -38,7 +38,7 @@ function ServiceInput({ tip, onSetTip, children }) {
     function handleSelectPercentage(e) {
         e.preventDefault();
 
-        onSetTip(e.target.value);
+        onSetTip(Number(e.target.value));
     }
 
     return (
@@ -54,6 +54,9 @@ function ServiceInput({ tip, onSetTip, children }) {
     );
 }
 
-function GrandTotal({ bill }) {
-    return <h1>{`You pay €100 (€${bill} + €10 tip)`}</h1>;
+function GrandTotal({ bill, tip, friendTip }) {
+    const tipAverage = tip + friendTip;
+    console.log(tipAverage);
+
+    return <h1>{`You pay €100 (€${bill} + €${tipAverage})`}</h1>;
 }
