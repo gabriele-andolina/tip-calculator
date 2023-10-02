@@ -19,3 +19,9 @@ label {
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
+
+button {
+    height: 2rem;
+    width: 10rem;
+    border: 3px solid #e5d283;
+}

@@ -2,9 +2,15 @@ import { useState } from "react";
 import "./style.css";
 
 export default function App() {
-    const [bill, setBill] = useState("");
+    const [bill, setBill] = useState(0);
     const [tip, setTip] = useState(0);
     const [friendTip, setFriendTip] = useState(0);
+
+    function handleReset() {
+        setBill(0);
+        setTip(0);
+        setFriendTip(0);
+    }
 
     return (
         <div>
@@ -16,6 +22,7 @@ export default function App() {
                 How did your friend like the service?
             </ServiceInput>
             <GrandTotal bill={bill} tip={tip} friendTip={friendTip} />
+            <Reset onReset={handleReset} />
         </div>
     );
 }
@@ -55,7 +62,12 @@ function ServiceInput({ tip, onSetTip, children }) {
 }
 
 function GrandTotal({ bill, tip, friendTip }) {
-    const tipTotal = (tip + friendTip) / 2;
+    const tipTotal = (bill * ((tip + friendTip) / 2)) / 100;
+    const grandTotal = bill + tipTotal;
 
-    return <h1>{`You pay €100 (€${bill} + €${tipTotal})`}</h1>;
+    return <h1>{`You pay €${grandTotal} (€${bill} + €${tipTotal})`}</h1>;
+}
+
+function Reset({ onReset }) {
+    return <button onClick={onReset}>Reset</button>;
 }
