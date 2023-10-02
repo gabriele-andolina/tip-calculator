@@ -21,8 +21,12 @@ export default function App() {
             <ServiceInput tip={friendTip} onSetTip={setFriendTip}>
                 How did your friend like the service?
             </ServiceInput>
-            <GrandTotal bill={bill} tip={tip} friendTip={friendTip} />
-            <Reset onReset={handleReset} />
+            {bill > 0 && (
+                <>
+                    <GrandTotal bill={bill} tip={tip} friendTip={friendTip} />
+                    <Reset onReset={handleReset} />
+                </>
+            )}
         </div>
     );
 }
